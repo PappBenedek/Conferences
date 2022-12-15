@@ -1,0 +1,175 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="display-5">Conference create</h2>
+      </div>
+      <div class="card-body">
+        <form
+          class="form"
+          #conferenceForm="ngForm"
+          (ngSubmit)="conferenceForm.form.valid && onCreateConference()"
+          novalidate
+          autocomplete="off"
+        >
+          <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="conference.name"
+              name="name"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+              Name is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="StartDate" class="form-label">Start date</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="conference.startTime"
+              name="StartDate"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+             Start date is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="EndDate" class="form-label">End date</label>
+            <input
+              type="date"
+              class="form-control"
+              [(ngModel)]="conference.endTime"
+              name="EndDate"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+             End date is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="Location" class="form-label">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="conference.location"
+              name="Location"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+              Location is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="Theme" class="form-label">Theme</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="conference.theme"
+              name="Theme"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+              Theme is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="MaxNumberOfPeople" class="form-label">MaxNumberOfPeople</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="conference.maxNumberOfPeople"
+              name="MaxNumberOfPeople"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+            MaxNumberOfPeople is required
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="Language" class="form-label">Language</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="conference.language"
+              name="Language"
+              #name="ngModel"
+              required
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                (name.touched || conferenceForm.submitted) &&
+                name.errors?.required
+              "
+            >
+            Language is required
+            </span>
+          </div>
+          <div *ngIf="showAlert" class="alert alert-success" role="alert">
+            Event successfully created!
+            <button class="btn btn-primary"
+            [routerLink]="['/']"
+            >Back</button>
+          </div>
+          <div align="right">
+            <button type="submit" class="btn btn-success">Create</button>
+            <button
+              type="reset"
+              class="btn btn-danger ms-2"
+              (click)="resetForm()"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

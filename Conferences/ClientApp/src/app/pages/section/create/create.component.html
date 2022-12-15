@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="display-5">section create</h2>
+        </div>
+        <div class="card-body">
+          <form
+            class="form"
+            #sectionForm="ngForm"
+            (ngSubmit)="sectionForm.form.valid && onCreateSection()"
+            novalidate
+            autocomplete="off"
+          >
+            <div class="mb-3">
+              <label for="Name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="section.name"
+                name="name"
+                #name="ngModel"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (name.touched || sectionForm.submitted) &&
+                  name.errors?.required
+                "
+              >
+                Name is required
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="StartDate" class="form-label">Start date</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                [(ngModel)]="section.startDate"
+                name="StartDate"
+                #name="ngModel"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (name.touched || sectionForm.submitted) &&
+                  name.errors?.required
+                "
+              >
+               Start date is required
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="StartDate" class="form-label">End date</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                [(ngModel)]="section.endDate"
+                name="EndDate"
+                #name="ngModel"
+                required
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (name.touched || sectionForm.submitted) &&
+                  name.errors?.required
+                "
+              >
+               Start date is required
+              </span>
+            </div>
+            <div *ngIf="showAlert" class="alert alert-success" role="alert">
+              Section successfully created!
+              <button class="btn btn-primary"
+              [routerLink]="['/']"
+              >Back</button>
+            </div>
+            <div align="right">
+              <button type="submit" class="btn btn-success">Create</button>
+              <button
+                type="reset"
+                class="btn btn-danger ms-2"
+                (click)="resetForm()"
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

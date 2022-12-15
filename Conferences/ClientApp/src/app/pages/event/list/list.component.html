@@ -1,0 +1,21 @@
+<h1 id="tableLabel">List of Events</h1>
+<button [routerLink]="'/create-event'" [queryParams]="{ sectionId: sectionId }" class="btn btn-success"> Create Event</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="events">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events">
+      <td>{{ event.id }}</td>
+      <td>{{ event.name }}</td>
+      <td>{{ event.author }}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/update-event']"
+        [queryParams]="{ eventId: [event.id]}" >Edit</button></td>
+    </tr>
+  </tbody>
+</table>

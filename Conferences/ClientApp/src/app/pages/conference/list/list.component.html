@@ -1,0 +1,34 @@
+<h1 id="tableLabel">List of Conferences</h1>
+<button [routerLink]="'/create-conference'" class="btn btn-success"> Create Conference</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="conferences">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>StartTime</th>
+      <th>EndTime</th>
+      <th>Location</th>
+      <th>Theme</th>
+      <th>MaxNumberOfPeople</th>
+      <th>Language</th>
+      <th>Sections</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conference of conferences">
+      <td>{{ conference.id }}</td>
+      <td>{{ conference.startTime }}</td>
+      <td>{{ conference.endTime }}</td>
+      <td>{{ conference.location }}</td>
+      <td>{{ conference.theme }}</td>
+      <td>{{ conference.maxNumberOfPeople }}</td>
+      <td>{{ conference.language }}</td>
+      <td><button class="btn btn-primary"[routerLink]="['/list-sections']"
+        [queryParams]="{ conferenceId: [conference.id] }">View</button></td>
+      <td><button class="btn btn-danger"
+        (click)="deleteConference([conference.id])"
+        > Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+

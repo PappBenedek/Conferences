@@ -1,0 +1,27 @@
+<h1 id="tableLabel">List of Sections</h1>
+<button [routerLink]="'/create-section'" [queryParams]="{ conferenceId: conferenceId }" class="btn btn-success"> Create Section</button>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="sections">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Starts</th>
+      <th>Ends</th>
+      <th>Events</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let section of sections">
+      <td>{{ section.id }}</td>
+      <td>{{ section.name }}</td>
+      <td>{{ section.startDate }}</td>
+      <td>{{ section.endDate }}</td>
+      <td><button class="btn btn-primary"[routerLink]="['/list-event']"
+        [queryParams]="{ secitonId: [section.id]}" >View</button></td>
+        <td><button class="btn btn-danger"
+          (click)="deleteSection([section.id])"
+          > Delete</button></td>
+    </tr>
+  </tbody>
+</table>
